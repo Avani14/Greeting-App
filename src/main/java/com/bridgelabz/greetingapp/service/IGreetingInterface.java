@@ -11,5 +11,6 @@ public interface IGreetingInterface {
     String messageFromPersonToDataBase(Person person);
     Optional<Person> findId(long id);
     List<Person> findAllPerson();
+    Person edit(long id, Person person);
 
 }

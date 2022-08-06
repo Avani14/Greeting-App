@@ -48,4 +48,8 @@ public class GreetingController {
     public List<Person> findAllPerson(){
         return greeting.findAllPerson();
     }
+    @PutMapping("/edit/{id}")
+    public Person editPerson(@RequestBody Person person,@PathVariable long id){
+        return greeting.edit(id,person);
+    }
 }
