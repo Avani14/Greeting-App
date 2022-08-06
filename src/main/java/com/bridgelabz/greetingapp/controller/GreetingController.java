@@ -1,6 +1,8 @@
 package com.bridgelabz.greetingapp.controller;
 
 import com.bridgelabz.greetingapp.entity.Greeting;
+import com.bridgelabz.greetingapp.service.IGreetingInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,5 +21,12 @@ public class GreetingController {
     @GetMapping("/greeting/{name}")
     public Greeting sayHelloWithName(@PathVariable String name){
         return new Greeting(id.incrementAndGet(),String.format(hello,name));
+    }
+    @Autowired
+    private IGreetingInterface greeting;
+
+    @GetMapping("/greeting/service")
+    public Greeting sayHelloFromServiceLayer(){
+        return greeting.message();
     }
 }
