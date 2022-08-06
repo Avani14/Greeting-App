@@ -6,6 +6,7 @@ import com.bridgelabz.greetingapp.service.IGreetingInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -37,5 +38,9 @@ public class GreetingController {
     @PostMapping("/greeting/post")
     public String sayHelloAndSaveInDatabase(@RequestBody Person person){
         return greeting.messageFromPersonToDataBase(person);
+    }
+    @GetMapping("/find")
+    public Optional<Person> findPersonById(@RequestParam long id){
+        return greeting.findId(id);
     }
 }
