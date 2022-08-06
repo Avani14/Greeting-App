@@ -5,7 +5,6 @@ import com.bridgelabz.greetingapp.entity.Person;
 import com.bridgelabz.greetingapp.repository.GreetingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +38,13 @@ public class GreetingService implements IGreetingInterface{
     public List<Person> findAllPerson() {
         List<Person> allEntries = greetingRepository.findAll();
         return allEntries;
+    }
+    @Override
+    public Person edit(long id, Person person) {
+        Optional<Person> p1 = this.findId(id);
+        p1.get().updateData(person);
+        greetingRepository.save(p1.get());
+        return p1.get();
     }
 
 }
