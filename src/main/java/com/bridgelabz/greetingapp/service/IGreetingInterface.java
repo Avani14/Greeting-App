@@ -12,5 +12,5 @@ public interface IGreetingInterface {
     Optional<Person> findId(long id);
     List<Person> findAllPerson();
     Person edit(long id, Person person);
-
+    Person delete(long id);
 }
