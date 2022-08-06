@@ -34,4 +34,8 @@ public class GreetingController {
     public Greeting sayHelloFromServiceLayerByPersonWithRequestParam(@RequestParam(value = "first_name" ,defaultValue = "Avani")String first_name,@RequestParam(value = "last_name" ,defaultValue = "Trivedi")String last_name){
         return new Greeting(id.incrementAndGet(),String.format(hello,first_name+" "+last_name));
     }
+    @PostMapping("/greeting/post")
+    public String sayHelloAndSaveInDatabase(@RequestBody Person person){
+        return greeting.messageFromPersonToDataBase(person);
+    }
 }
